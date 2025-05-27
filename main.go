@@ -6,9 +6,9 @@ import (
 	"crypto/cipher"
 	"encoding/base64"
 	"fmt"
-	"io/ioutil"
 	"math/rand"
 	"net/url"
+	"os"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -46,7 +46,7 @@ func max(a, b int) int {
 }
 
 func readFile(filename string) (string, error) {
-	content, err := ioutil.ReadFile(filename)
+	content, err := os.ReadFile(filename)
 	if err != nil {
 		return "", err
 	}
