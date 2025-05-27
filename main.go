@@ -7,6 +7,7 @@ import (
 	"encoding/base64"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"math/rand"
 	"net/url"
 	"time"
@@ -199,6 +200,19 @@ func main() {
 			"xxttparams": xxttparams,
 			"verify_fp":  verifyFP,
 			"user_agent": emulateTemplate.UserAgent,
+		}
+
+		if err := page.Close(); err != nil {
+			log.Printf("page close error: %v", err)
+		}
+		if err := context.Close(); err != nil {
+			log.Printf("context close error: %v", err)
+		}
+		if err := browser.Close(); err != nil {
+			log.Printf("browser close error: %v", err)
+		}
+		if err := pw.Stop(); err != nil {
+			log.Printf("playwright stop error: %v", err)
 		}
 
 		return c.JSON(response)
