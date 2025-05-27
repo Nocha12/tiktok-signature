@@ -54,6 +54,16 @@ go get -u github.com/playwright-community/playwright-go
 ```bash
 playwright install
 ```
+## JS 번들 업데이트
+
+새로운 TikTok JS 번들에서 시그니처 함수가 변경되었을 때 다음 명령을 실행합니다.
+
+```bash
+node update-signature.js
+```
+
+이 스크립트는 최신 acrawler 번들을 내려 받아 필요한 함수만 `cmd/scripts/signature_functions.txt`에 저장합니다.
+
 
 ## Usage
 
