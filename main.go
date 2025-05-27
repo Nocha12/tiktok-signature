@@ -187,7 +187,6 @@ func main() {
 		signedURL += "&X-Bogus=" + generatedBogus.(string)
 
 		encrypt_password := "webapp1.0+202106"
-		queryString += "&is_encryption=1"
 
 		password := padRight(encrypt_password, "\x00", 16)
 		xxttparams, _ := xttparams(queryString, password)
