@@ -190,8 +190,10 @@ func main() {
 		queryString += "&is_encryption=1"
 
 		password := padRight(encrypt_password, "\x00", 16)
-		xxttparams, _ := xttparams(queryString, password)
-		xxttparams += ""
+		xxttparams, err := xttparams(queryString, password)
+		if err != nil {
+			return c.Status(500).SendString(err.Error())
+		}
 
 		response := fiber.Map{
 			"signature":  signature.(string),
